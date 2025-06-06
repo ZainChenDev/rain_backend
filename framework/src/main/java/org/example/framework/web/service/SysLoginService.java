@@ -1,9 +1,11 @@
 package org.example.framework.web.service;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 public class SysLoginService {
     public String login(String username, String password, String code, String uuid) {
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
     }
 
     public void loginPreCheck(String username, String password) {

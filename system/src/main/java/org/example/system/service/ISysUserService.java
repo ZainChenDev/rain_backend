@@ -2,8 +2,13 @@ package org.example.system.service;
 
 import org.example.common.core.domain.entity.SysUser;
 
-import java.util.List;
-
 public interface ISysUserService {
-    List<SysUser> selectUserList();
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param userName 用户名
+     * @return 用户对象信息
+     */
+    SysUser selectUserByUserName(String userName);
 }
