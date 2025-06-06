@@ -110,9 +110,9 @@ public class MyBatisConfig {
      */
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        String typeAliasesPackage = env.getProperty("mybatis.typeAliasesPackage");
-        String mapperLocations = env.getProperty("mybatis.mapperLocations");
-        String configLocation = env.getProperty("mybatis.configLocation");
+        String typeAliasesPackage = env.getProperty("mybatis.type-aliases-package");
+        String mapperLocations = env.getProperty("mybatis.mapper-locations");
+        String configLocation = env.getProperty("mybatis.config-location");
 
         if (typeAliasesPackage == null || typeAliasesPackage.isEmpty()) {
             throw new RuntimeException("mybatis.typeAliasesPackage 未配置");

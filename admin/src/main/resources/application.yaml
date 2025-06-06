@@ -4,11 +4,15 @@ server:
 spring:
   profiles:
     active: druid
+  # 服务模块
+  devtools:
+    restart:
+      enabled: true
 
 mybatis:
   # 扫描所有实体类
-  typeAliasesPackage: org.example.**.domain
+  type-aliases-package: org.example.**.domain
   # 扫描所有mapper.xml映射文件
-  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
   # 加载全局的配置文件，配置类位置：framework/config/MyBatisConfig
-  configLocation: classpath:mybatis-config.xml
+  config-location: classpath:mybatis-config.xml
