@@ -1,11 +1,19 @@
 package org.example.framework.web.service;
 
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 
 public class SysLoginService {
-    public String login(String username, String password, String code, String uuid) {
+    @Resource
+    private AuthenticationManager authenticationManager;
+
+    public void login(String username, String password, String code, String uuid) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+//        AuthenticationContextHolder.setContext(authenticationToken);
+        Authentication authentication = authenticationManager.authenticate(authenticationToken);
     }
 
     public void loginPreCheck(String username, String password) {

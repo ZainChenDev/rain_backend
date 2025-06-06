@@ -15,11 +15,10 @@ public class SysUserController {
     @Autowired
     private ISysUserService userService;
 
-    @GetMapping("/list")
-    public List<SysUser> list() {
-        System.out.println("Fetching user list...");
-//        startPage();
-        List<SysUser> list = userService.selectUserList();
-        return list;
-    }
+//    @GetMapping("/list")
+//    public List<SysUser> list() {
+//        System.out.println("Fetching user list...");
+//        List<SysUser> list = userService.selectUserList();
+//        return list;
+//    }
 }

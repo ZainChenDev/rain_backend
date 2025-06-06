@@ -1,6 +1,7 @@
 package org.example.framework.web.service;
 
 import org.example.common.core.domain.entity.SysUser;
+import org.example.common.core.domain.model.LoginUser;
 import org.example.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = userService.selectUserByUserName(username);
-        return null;
+        return new LoginUser(user.getUserId(), user.getDeptId(), user);
     }
 }
