@@ -41,6 +41,8 @@
         <lombok.version>1.18.38</lombok.version>
         <mybatis.boot.version>3.0.4</mybatis.boot.version>
         <pagehelper.boot.version>2.1.0</pagehelper.boot.version>
+        <jwt.version>0.12.6</jwt.version>
+        <user-agent-utils.version>1.21</user-agent-utils.version>
     </properties>
 
     <dependencyManagement>
@@ -96,6 +98,30 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- jwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- user-agent解析工具 -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${user-agent-utils.version}</version>
             </dependency>
 
             <dependency>

@@ -9,6 +9,14 @@ spring:
     restart:
       enabled: true
 
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: abcdefghijklmnopqrstuvwxyz
+  # 令牌有效期（默认30分钟）
+  expire-time: 30
+
 mybatis:
   # 扫描所有实体类
   type-aliases-package: org.example.**.domain
