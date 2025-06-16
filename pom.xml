@@ -43,6 +43,7 @@
         <pagehelper.boot.version>2.1.0</pagehelper.boot.version>
         <jwt.version>0.12.6</jwt.version>
         <user-agent-utils.version>1.21</user-agent-utils.version>
+        <kaptcha.version>2.3.3</kaptcha.version>
     </properties>
 
     <dependencyManagement>
@@ -115,6 +116,13 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-jackson</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>pro.fessional</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
 
             <!-- user-agent解析工具 -->

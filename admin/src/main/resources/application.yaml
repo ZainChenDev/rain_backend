@@ -1,3 +1,8 @@
+rain:
+  name: Rain
+  # 验证码类型 math：数字计算 char：字符验证
+  captcha-type: math
+
 server:
   port: 8080
 
