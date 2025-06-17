@@ -1,7 +1,6 @@
 package org.example.common.config;
 
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,5 @@ public class RainConfig {
     /**
      * 验证码类型
      */
-    @Getter
-    private static String captchaType;
-
+    private String captchaType;
 }
