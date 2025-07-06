@@ -1,4 +1,4 @@
-package org.example.common.utils.uuid;
+package org.example.common.util.uuid;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

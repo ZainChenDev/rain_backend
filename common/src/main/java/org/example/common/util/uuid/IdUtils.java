@@ -1,4 +1,4 @@
-package org.example.common.utils.uuid;
+package org.example.common.util.uuid;
 
 /**
  * ID生成器工具类

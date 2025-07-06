@@ -5,8 +5,8 @@ import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.constant.Constants;
 import org.example.common.core.domain.model.LoginUser;
-import org.example.common.utils.ServletUtils;
-import org.example.common.utils.uuid.IdUtils;
+import org.example.common.util.ServletUtils;
+import org.example.common.util.uuid.IdUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

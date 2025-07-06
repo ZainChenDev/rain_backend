@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.config.RainConfig;
-import org.example.common.utils.uuid.IdUtils;
+import org.example.common.util.uuid.IdUtils;
 import org.example.framework.web.dto.CaptchaResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
