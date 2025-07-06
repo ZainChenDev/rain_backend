@@ -47,7 +47,7 @@ public class BaseEntity implements Serializable {
     /**
      * 备注
      */
-    private String remarks;
+    private String remark;
 
     /**
      * 请求参数

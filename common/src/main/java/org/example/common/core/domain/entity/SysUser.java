@@ -1,16 +1,17 @@
 package org.example.common.core.domain.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.example.common.core.domain.BaseEntity;
 
 /**
  * 用户信息表
- *
- * @TableName sys_user
  */
 @Data
-public class SysUser {
+@EqualsAndHashCode(callSuper = false)
+public class SysUser extends BaseEntity {
     /**
      * 用户ID
      */
@@ -30,11 +31,6 @@ public class SysUser {
      * 用户昵称
      */
     private String nickName;
-
-    /**
-     * 用户类型（00系统用户）
-     */
-    private String userType;
 
     /**
      * 用户邮箱
@@ -79,35 +75,5 @@ public class SysUser {
     /**
      * 最后登录时间
      */
-    private Date loginDate;
-
-    /**
-     * 密码最后更新时间
-     */
-    private Date pwdUpdateDate;
-
-    /**
-     * 创建者
-     */
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新者
-     */
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 备注
-     */
-    private String remark;
+    private LocalDate loginDate;
 }
