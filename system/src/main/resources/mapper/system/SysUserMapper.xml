@@ -17,7 +17,7 @@
         <result property="status" column="status"/>
         <result property="delFlag" column="del_flag"/>
         <result property="loginIp" column="login_ip"/>
-        <result property="loginDate" column="login_date"/>
+        <result property="loginTime" column="login_time"/>
         <result property="createBy" column="create_by"/>
         <result property="createTime" column="create_time"/>
         <result property="updateBy" column="update_by"/>

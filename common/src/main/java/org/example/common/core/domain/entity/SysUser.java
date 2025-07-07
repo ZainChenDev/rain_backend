@@ -1,6 +1,6 @@
 package org.example.common.core.domain.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -75,5 +75,5 @@ public class SysUser extends BaseEntity {
     /**
      * 最后登录时间
      */
-    private LocalDate loginDate;
+    private LocalDateTime loginTime;
 }
