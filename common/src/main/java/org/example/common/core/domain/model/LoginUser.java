@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Set;
 
+/**
+ * SpringSecurity登录用户身份
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -69,8 +72,7 @@ public class LoginUser implements UserDetails {
      */
     private SysUser user;
 
-    public LoginUser(Long userId, Long deptId, SysUser user)
-    {
+    public LoginUser(Long userId, Long deptId, SysUser user) {
         this.userId = userId;
         this.deptId = deptId;
         this.user = user;
