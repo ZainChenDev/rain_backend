@@ -1,7 +1,7 @@
 package org.example.web.controller.common;
 
 import org.example.common.core.domain.CommonResult;
-import org.example.framework.web.dto.CaptchaResponseDTO;
+import org.example.framework.web.dto.login.CaptchaResponseDTO;
 import org.example.framework.web.service.CaptchaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

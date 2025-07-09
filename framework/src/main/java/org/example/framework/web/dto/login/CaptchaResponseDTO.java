@@ -1,4 +1,4 @@
-package org.example.framework.web.dto;
+package org.example.framework.web.dto.login;
 
 import lombok.Data;
 
