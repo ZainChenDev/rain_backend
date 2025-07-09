@@ -38,7 +38,7 @@
                u.status,
                u.del_flag,
                u.login_ip,
-               u.login_date,
+               u.login_time,
                u.create_by,
                u.create_time,
                u.remark
