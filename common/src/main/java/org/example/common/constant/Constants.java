@@ -12,4 +12,14 @@ public class Constants {
      * jwt用户名称
      */
     public static final String JWT_USERNAME = Claims.SUBJECT;
+
+    /**
+     * 令牌
+     */
+    public static final String TOKEN = "token";
+
+    /**
+     * 令牌前缀
+     */
+    public static final String TOKEN_PREFIX = "Bearer ";
 }
