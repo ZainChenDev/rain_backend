@@ -24,7 +24,7 @@ token:
 
 mybatis:
   # 扫描所有实体类
-  type-aliases-package: org.example.**.domain
+  type-aliases-package: com.zainchen.**.domain
   # 扫描所有mapper.xml映射文件
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   # 加载全局的配置文件，配置类位置：framework/config/MyBatisConfig

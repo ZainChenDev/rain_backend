@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.zainchen</groupId>
     <artifactId>rain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -134,22 +134,22 @@
             </dependency>
 
             <dependency>
-                <groupId>org.example</groupId>
+                <groupId>com.zainchen</groupId>
                 <artifactId>admin</artifactId>
                 <version>${rain.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.example</groupId>
+                <groupId>com.zainchen</groupId>
                 <artifactId>framework</artifactId>
                 <version>${rain.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.example</groupId>
+                <groupId>com.zainchen</groupId>
                 <artifactId>common</artifactId>
                 <version>${rain.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.example</groupId>
+                <groupId>com.zainchen</groupId>
                 <artifactId>system</artifactId>
                 <version>${rain.version}</version>
             </dependency>
