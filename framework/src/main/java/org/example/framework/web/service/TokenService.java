@@ -2,7 +2,9 @@ package org.example.framework.web.service;
 
 import eu.bitwalker.useragentutils.UserAgent;
 import io.jsonwebtoken.Jwts;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.example.common.constant.Constants;
 import org.example.common.core.domain.model.LoginUser;
 import org.example.common.util.ServletUtils;
@@ -38,7 +40,10 @@ public class TokenService {
     private static final Long MILLIS_MINUTE_TWENTY = 20 * 60 * 1000L;
 
 //    public LoginUser getLoginUser(HttpServletRequest request) {
-//
+//        String token = getToken(request);
+//        if (StringUtils.isNotBlank(token)) {
+//            return null;
+//        }
 //    }
 
     /**
@@ -98,9 +103,13 @@ public class TokenService {
      * 鉴权：从Http请求中获取令牌
      *
      * @param request HttpServletRequest对象
-     * @return
+     * @return 去除前缀后的令牌字符串
      */
-//    private String getToken(HttpServletRequest request) {
-//        String token = request.getHeader(header);
-//    }
+    private String getToken(HttpServletRequest request) {
+        String token = request.getHeader(header);
+        if (StringUtils.isNotBlank(token) && token.startsWith(Constants.TOKEN_PREFIX)) {
+            token = token.replace(Constants.TOKEN_PREFIX, "");
+        }
+        return token;
+    }
 }

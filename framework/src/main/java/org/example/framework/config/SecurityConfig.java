@@ -1,20 +1,24 @@
 package org.example.framework.config;
 
+import org.example.framework.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * Spring Security配置
  */
+@EnableMethodSecurity(securedEnabled = true)
 @Configuration
 public class SecurityConfig {
 
@@ -23,6 +27,12 @@ public class SecurityConfig {
      */
     @Autowired
     private UserDetailsService userDetailsService;
+
+    /**
+     * 跨域过滤器 {@link org.example.framework.config.ResourcesConfig#corsFilter()}
+     */
+    @Autowired
+    private CorsFilter corsFilter;
 
     @Bean
     public AuthenticationManager authenticationManager() {
@@ -46,9 +56,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 // 添加允许匿名访问的URL
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login","/captcha").permitAll()
+                        .requestMatchers("/login", "/captcha").permitAll()
                         .anyRequest().authenticated()
-                );
+                )
+                // 进行jwt验证
+                .addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
 
         return http.build();
     }
