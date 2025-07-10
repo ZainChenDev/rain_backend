@@ -11,9 +11,12 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
 
 /**
@@ -28,6 +31,9 @@ public class SecurityConfig {
      */
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     /**
      * 跨域过滤器 {@link ResourcesConfig#corsFilter()}
@@ -53,15 +59,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // 禁用CSRF
+                // 基于token，不需要CSRF防护
                 .csrf(AbstractHttpConfigurer::disable)
+                // 基于token，不需要session
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .headers(headersCustomizer -> headersCustomizer
+                        // 禁用浏览器缓存头（Cache-Control）
+                        .cacheControl(HeadersConfigurer.CacheControlConfig::disable)
+                        // 禁用X-Frame-Options，允许iframe嵌套
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+                )
                 // 添加允许匿名访问的URL
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/login", "/captcha").permitAll()
                         .anyRequest().authenticated()
-                );
-//                // 进行jwt验证
-//                .addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
+                )
+                // jwt filter，添加在UsernamePasswordAuthenticationFilter之前
+                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                // cors filter，添加在jwt filter之前
+                .addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
 
         return http.build();
     }
