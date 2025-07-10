@@ -11,8 +11,22 @@ spring:
     active: druid
   # 服务模块
   devtools:
+    # 热部署开关
     restart:
       enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      password:
+      timeout: 10s
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-active: 8
+          max-wait: -1ms
 
 token:
   # 令牌自定义标识
