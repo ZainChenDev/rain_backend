@@ -224,20 +224,17 @@ public class KaptchaTextCreatorTest {
      * 辅助方法 - 根据操作符计算预期结果
      */
     private int calculateExpected(int operand1, String operator, int operand2) {
-        switch (operator) {
-            case "+":
-                return operand1 + operand2;
-            case "-":
-                return Math.abs(operand1 - operand2);
-            case "*":
-                return operand1 * operand2;
-            case "/":
+        return switch (operator) {
+            case "+" -> operand1 + operand2;
+            case "-" -> Math.abs(operand1 - operand2);
+            case "*" -> operand1 * operand2;
+            case "/" -> {
                 if (operand2 == 0) {
                     throw new ArithmeticException("除数不能为0");
                 }
-                return operand1 / operand2;
-            default:
-                throw new IllegalArgumentException("未知操作符: " + operator);
-        }
+                yield operand1 / operand2;
+            }
+            default -> throw new IllegalArgumentException("未知操作符: " + operator);
+        };
     }
 }

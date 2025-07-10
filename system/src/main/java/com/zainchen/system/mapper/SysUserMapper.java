@@ -18,5 +18,5 @@ public interface SysUserMapper {
      * @param userName 用户名
      * @return 用户对象信息
      */
-    public SysUser selectUserByUserName(String userName);
+    SysUser selectUserByUserName(String userName);
 }

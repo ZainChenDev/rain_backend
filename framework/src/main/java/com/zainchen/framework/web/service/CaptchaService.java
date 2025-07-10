@@ -2,8 +2,6 @@ package com.zainchen.framework.web.service;
 
 import com.google.code.kaptcha.Producer;
 import jakarta.annotation.Resource;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import com.zainchen.common.config.RainConfig;
 import com.zainchen.common.util.uuid.IdUtils;
@@ -63,7 +61,7 @@ public class CaptchaService {
             // 生成UUID并保存到缓存
             String uuid = IdUtils.simpleUUID();
             // TODO: 将验证码数据保存到缓存中，使用uuid作为key
-            String base64Image = convertImageToBase64(captchaData.getImage());
+            String base64Image = convertImageToBase64(captchaData.image());
 
             captchaResponseDTO.setUuid(uuid);
             captchaResponseDTO.setImg(base64Image);
@@ -82,15 +80,14 @@ public class CaptchaService {
     private CaptchaData createCaptcha() {
         String captchaType = rainConfig.getCaptchaType();
 
-        switch (captchaType) {
-            case CAPTCHA_TYPE_MATH:
-                return generateMathCaptcha();
-            case CAPTCHA_TYPE_CHAR:
-                return generateCharCaptcha();
-            default:
+        return switch (captchaType) {
+            case CAPTCHA_TYPE_MATH -> generateMathCaptcha();
+            case CAPTCHA_TYPE_CHAR -> generateCharCaptcha();
+            default -> {
                 log.warn("未知的验证码类型: {}, 使用默认字符验证码", captchaType);
-                return generateCharCaptcha();
-        }
+                yield generateCharCaptcha();
+            }
+        };
     }
 
     /**
@@ -132,23 +129,11 @@ public class CaptchaService {
 
     /**
      * 验证码封装类
+     *
+     * @param displayText 验证码显示文本
+     * @param result      验证码结果
+     * @param image       验证码图像
      */
-    @Getter
-    @AllArgsConstructor
-    private static class CaptchaData {
-        /**
-         * 验证码显示文本
-         */
-        private final String displayText;
-
-        /**
-         * 验证码结果
-         */
-        private final String result;
-
-        /**
-         * 验证码图像
-         */
-        private final BufferedImage image;
+    private record CaptchaData(String displayText, String result, BufferedImage image) {
     }
 }
