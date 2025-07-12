@@ -3,11 +3,16 @@ package com.zainchen.common.core.domain;
 import lombok.Data;
 import com.zainchen.common.enums.Status;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * 统一返回结果类
  */
 @Data
-public class CommonResult<T> {
+public class CommonResult<T> implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     /**
      * 状态码
      */
@@ -23,6 +28,9 @@ public class CommonResult<T> {
      */
     private T data;
 
+    /**
+     * 成功结果
+     */
     public static <T> CommonResult<T> ok(T data) {
         CommonResult<T> result = new CommonResult<>();
         result.setCode(Status.OK.getCode());
