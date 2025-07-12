@@ -20,6 +20,12 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- SpringDoc -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+
         <!-- MySQL驱动 -->
         <dependency>
             <groupId>com.mysql</groupId>

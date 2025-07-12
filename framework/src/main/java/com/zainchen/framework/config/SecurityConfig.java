@@ -72,6 +72,7 @@ public class SecurityConfig {
                 // 添加允许匿名访问的URL
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/login", "/captcha").permitAll()
+                        .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 // jwt filter，添加在UsernamePasswordAuthenticationFilter之前
