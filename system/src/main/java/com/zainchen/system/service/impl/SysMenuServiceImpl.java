@@ -1,5 +1,6 @@
 package com.zainchen.system.service.impl;
 
+import com.zainchen.common.core.domain.entity.SysMenu;
 import org.apache.commons.lang3.StringUtils;
 import com.zainchen.system.mapper.SysMenuMapper;
 import com.zainchen.system.service.ISysMenuService;
@@ -15,6 +16,16 @@ import java.util.Set;
 public class SysMenuServiceImpl implements ISysMenuService {
     @Autowired
     private SysMenuMapper menuMapper;
+
+    /**
+     * 根据用户查询系统菜单列表
+     *
+     * @return 菜单列表
+     */
+    @Override
+    public List<SysMenu> selectMenuList() {
+        return menuMapper.selectMenuList();
+    }
 
     /**
      * 根据角色ID查询权限

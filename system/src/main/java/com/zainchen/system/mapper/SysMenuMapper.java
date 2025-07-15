@@ -1,8 +1,11 @@
 package com.zainchen.system.mapper;
 
+import com.zainchen.common.core.domain.entity.SysMenu;
+
 import java.util.List;
 
 public interface SysMenuMapper {
+    List<SysMenu> selectMenuList();
     /**
      * 根据角色ID查询权限
      *
