@@ -1,20 +1,25 @@
 package com.zainchen.web.controller.system;
 
+import com.zainchen.common.core.controller.BaseController;
 import com.zainchen.common.core.domain.CommonResult;
 import com.zainchen.common.core.domain.entity.SysUser;
 import com.zainchen.common.core.domain.model.LoginUser;
+import com.zainchen.common.core.page.PageParam;
+import com.zainchen.common.core.page.TableDataInfo;
 import com.zainchen.common.util.SecurityUtils;
 import com.zainchen.framework.web.dto.user.UserInfoResponseDTO;
 import com.zainchen.framework.web.service.SysPermissionService;
 import com.zainchen.system.service.ISysUserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/system/user")
-public class SysUserController {
+public class SysUserController extends BaseController {
     @Autowired
     private ISysUserService userService;
 
@@ -33,10 +38,10 @@ public class SysUserController {
         return CommonResult.ok(userInfo);
     }
 
-//    @GetMapping("/list")
-//    public List<SysUser> list() {
-//        System.out.println("Fetching user list...");
-//        List<SysUser> list = userService.selectUserList();
-//        return list;
-//    }
+    @GetMapping("/list")
+    public CommonResult<TableDataInfo> list(@Valid PageParam pageParam) {
+        startPage(pageParam);
+        List<SysUser> list = userService.selectUserList();
+        return CommonResult.ok(getDataTable(list));
+    }
 }
